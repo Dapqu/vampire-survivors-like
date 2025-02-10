@@ -1,0 +1,10 @@
+res://scenes/main/main.tscn
+res://resources/theme/theme.tres
+res://scenes/component/hit_flash_component/hit_flash_component.gdshader
+res://resources/tileset.tres
+res://scenes/ui/ability_upgrade_card/fake_3d.gdshader
+res://scenes/ui/upgrade_screen/upgrade_screen.tscn
+res://scenes/ui/end_screen/end_screen.tscn
+res://scenes/manager/enemy_manager/enemy_manager.tscn
+res://scenes/autoload/groups_utils.tscn
+res://scenes/game_object/basic_enemy/basic_enemy.tscn

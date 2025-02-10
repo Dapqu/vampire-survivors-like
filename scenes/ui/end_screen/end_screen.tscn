@@ -1,0 +1,137 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp4aalmifk4xa"]
+
+[ext_resource type="Script" path="res://scenes/ui/end_screen/end_screen.gd" id="1_wy5yn"]
+
+[sub_resource type="Animation" id="Animation_koedm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3hvof"]
+resource_name = "in"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xoruv"]
+resource_name = "out"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4dlsp"]
+_data = {
+"RESET": SubResource("Animation_koedm"),
+"in": SubResource("Animation_3hvof"),
+"out": SubResource("Animation_xoruv")
+}
+
+[node name="EndScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_wy5yn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4dlsp")
+}
+autoplay = "in"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.607843, 0.298039, 0.639216, 0.333333)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(144, 201.6)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ContextMargin" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Context" type="VBoxContainer" parent="MarginContainer/PanelContainer/ContextMargin"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Labels" type="VBoxContainer" parent="MarginContainer/PanelContainer/ContextMargin/Context"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/ContextMargin/Context/Labels"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Test Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/ContextMargin/Context/Labels"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Test Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/PanelContainer/ContextMargin/Context"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/ContextMargin/Context/Buttons"]
+layout_mode = 2
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/ContextMargin/Context/Buttons"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/ContextMargin/Context/Buttons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/ContextMargin/Context/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

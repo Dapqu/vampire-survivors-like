@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxckd51a022lr"]
+
+[ext_resource type="Script" path="res://scenes/manager/end_screen_manager/end_screen_manager.gd" id="1_8s40v"]
+[ext_resource type="PackedScene" uid="uid://bp4aalmifk4xa" path="res://scenes/ui/end_screen/end_screen.tscn" id="2_diy6x"]
+
+[node name="EndScreenManager" type="Node"]
+script = ExtResource("1_8s40v")
+end_screen_scene = ExtResource("2_diy6x")

@@ -1,0 +1,14 @@
+CharacterBody2D
+CollisionShape2D
+Sprite2D
+Node2D
+AnimationPlayer
+ColorRect
+Control
+Button
+TextureRect
+PanelContainer
+SubViewport
+SubViewportContainer
+Label
+MarginContainer

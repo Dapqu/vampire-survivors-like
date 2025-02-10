@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://gdcs6pafwgah"]
+
+[ext_resource type="Script" path="res://scenes/autoload/groups_utils.gd" id="1_wgsnb"]
+
+[node name="GroupsUtils" type="Node"]
+script = ExtResource("1_wgsnb")
